@@ -1,0 +1,31 @@
+.a{ 
+   font-family: ;
+   font-size: ;
+   color: brown;
+}
+
+.b{
+    text-indent: 40px;
+    text-align: justify;
+}
+
+.contentbox{
+    background: linear-gradient(to bottom, #E1C16E, #7B3F00); /* Gradient background */
+    padding: 20px; /* Ruang dalam */
+    border-radius: 10px; /* Membulatkan sudut */
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+    margin: 20px; /* Jarak antar elemen */
+}
+
+.contentboxp{
+    background: linear-gradient(to bottom, #7B3F00, #E1C16E); /* Gradient background */
+    padding: 20px; /* Ruang dalam */
+    border-radius: 10px; /* Membulatkan sudut */
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+    margin: 20px; /* Jarak antar elemen */
+}
+
+/* Gaya untuk bagian konten */
+section {
+    padding: 20px; /* Ruang dalam */
+}

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Judul halaman yang ditampilkan di tab browser -->
+    <title>Website Perencanaan</title>
+
+    <style>
+        /* Mengatur tampilan dasar body */
+        body {
+            font-family: Arial, sans-serif; /* Gunakan font Arial */
+            margin: 0; /* Hilangkan margin default */
+            padding: 0; /* Hilangkan padding default */
+            background: linear-gradient(to bottom, #FFA500, #FFD700, #FF4500); /* Gradient warna latar belakang */
+            min-height: 100vh; /* Minimal setinggi layar */
+        }
+
+        /* Gaya untuk navigasi dan paragraf */
+        nav, p {
+            background: linear-gradient(135deg, #FF8C00, #FF4500); /* Gradient background */
+            padding: 15px; /* Padding dalam */
+            text-align: center; /* Teks di tengah */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Efek bayangan */
+        }
+
+        /* Gaya untuk link navigasi, tombol dropdown, dan paragraf */
+        nav a, p, .dropdown > a {
+            background: linear-gradient(135deg, #FFA500, #FF6347); /* Gradient warna */
+            color: black; /* Warna teks */
+            padding: 12px 20px; /* Ruang dalam elemen */
+            margin: 5px; /* Jarak antar elemen */
+            text-decoration: none; /* Hilangkan garis bawah */
+            display: inline-block; /* Supaya sejajar */
+            border-radius: 25px; /* Membuat sudut elemen membulat */
+            transition: all 0.3s ease-in-out; /* Efek animasi saat hover */
+            font-weight: bold; /* Teks tebal */
+            box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+        }
+
+        /* Efek saat hover di navigasi */
+        nav a:hover, .dropdown:hover > a {
+            background: linear-gradient(135deg, #FF4500, #FF0000); /* Ubah warna background */
+            transform: translateY(-3px); /* Geser ke atas saat hover */
+            box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.3); /* Tambah bayangan */
+        }
+
+        /* Dropdown menu */
+        .dropdown {
+            display: inline-block; /* Supaya sejajar */
+            position: relative; /* Agar konten dropdown posisinya tetap */
+        }
+
+        /* Konten dropdown yang tersembunyi */
+        .dropdown-content {
+            display: none; /* Awalnya tidak ditampilkan */
+            position: absolute; /* Agar tidak mengganggu elemen lain */
+            background: white; /* Warna latar putih */
+            min-width: 200px; /* Lebar minimum */
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2); /* Efek bayangan */
+            border-radius: 5px; /* Membulatkan sudut */
+            overflow: hidden; /* Agar elemen tidak keluar dari batas */
+            z-index: 10; /* Menempatkan elemen di atas elemen lain */
+        }
+
+        /* Gaya untuk link di dalam dropdown */
+        .dropdown-content a {
+            color: black; /* Warna teks */
+            padding: 12px 16px; /* Ruang dalam elemen */
+            display: block; /* Tampilkan sebagai blok */
+            text-decoration: none; /* Hilangkan garis bawah */
+            transition: background 0.3s, padding-left 0.3s; /* Efek animasi */
+        }
+
+        /* Efek hover pada dropdown */
+        .dropdown-content a:hover {
+            background: #f1f1f1; /* Ubah warna saat hover */
+            padding-left: 20px; /* Geser teks ke kanan */
+        }
+
+        /* Menampilkan dropdown saat hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Gaya untuk bagian konten */
+        section {
+            padding: 20px; /* Ruang dalam */
+        }
+
+        /* Kotak konten dengan efek bayangan */
+        .content-box {
+            background: linear-gradient(to bottom, #FFD700, #FFA500); /* Gradient background */
+            padding: 20px; /* Ruang dalam */
+            border-radius: 10px; /* Membulatkan sudut */
+            box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+            margin: 20px; /* Jarak antar elemen */
+        }
+
+        /* Kontainer grafik batang */
+        .chart-container {
+            display: flex; /* Gunakan flexbox */
+            align-items: flex-end; /* Susun elemen di dasar */
+            height: 300px; /* Tinggi kontainer */
+            margin-top: 20px; /* Jarak atas */
+        }
+
+        /* Gaya untuk batang grafik */
+        .bar {
+            width: 50px; /* Lebar batang */
+            margin-right: 10px; /* Jarak antar batang */
+            background: linear-gradient(to top, #FF8C00, #FF6347); /* Gradient warna */
+            border-radius: 5px; /* Membulatkan sudut */
+        }
+
+        /* Menentukan tinggi batang */
+        .bar span {
+            display: block;
+            height: 100%; /* Mengisi seluruh tinggi */
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        /* Tinggi batang untuk tiap bulan */
+        .bar-jan span { height: 100px; } /* Januari */
+        .bar-feb span { height: 150px; } /* Februari */
+        .bar-mar span { height: 100px; } /* Maret */
+        .bar-apr span { height: 250px; } /* April */
+        .bar-may span { height: 300px; } /* Mei */
+
+        /* Label untuk grafik */
+        .labels {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .labels div {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="abstrak.html">Abstrak</a>
+        <div class="dropdown">
+            <p>Pendahuluan</p>
+            <div class="dropdown-content">
+                <a href="pendahuluan.html">Latar Belakang</a>
+                <a href="pendahuluan.html">Tujuan</a>
+                <a href="pendahuluan.html">Manfaat</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <p>Rencana Kegiatan</p>
+            <div class="dropdown-content">
+                <a href="rencana.html">Perencanaan Produksi</a>
+                <a href="rencana.html">Perencanaan Promosi</a>
+                <a href="rencana.html">Perencanaan Booth</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <p>Hasil Kegiatan</p>
+            <div class="dropdown-content">
+                <a href="hasil.html">Laporan Pelaksanaan</a>
+                <a href="hasil.html">Laporan Keuangan</a>
+                <a href="hasil.html">Statistik Jualan</a>
+                <a href="hasil.html">Refleksi Kegiatan</a>
+                <a href="hasil.html">Video Proses Pembuatan dan Hasil Produk Bioteknologi</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <p>Penutup</p>
+            <div class="dropdown-content">
+                <a href="penutup.html">Kesimpulan</a>
+                <a href="penutup.html">Saran</a>
+            </div>
+        </div>
+        <br>
+        <a href="pustaka.html">Daftar Pustaka</a>
+        <a href="lampiran.html">Lampiran</a>
+        <a href="ppt.html">PPT Presentasi</a>
+    </nav>
+    
+    <section id="latar" class="content-box">
+        <p>
+            Latar belakang penelitian ini dimulai dengan kebutuhan mendesak untuk pengembangan produk bioteknologi yang tidak hanya efisien, tetapi juga ramah lingkungan. Dalam era globalisasi dan perubahan iklim yang semakin nyata, penelitian ini bertujuan untuk mengidentifikasi solusi inovatif yang dapat mengurangi dampak negatif terhadap alam, sambil memberikan manfaat ekonomi yang berkelanjutan.
+        </p>
+    </section>
+
+    <section id="tujuan" class="content-box">
+        <h2>Tujuan</h2>
+        <p>
+            Tujuan utama dari penelitian ini adalah untuk mengembangkan produk bioteknologi yang dapat berfungsi sebagai solusi ramah lingkungan, serta untuk menganalisis dampak ekonomi dan sosial dari penerapan teknologi ini. Penelitian ini juga bertujuan untuk memahami metode produksi yang efisien dan strategi pemasaran yang tepat untuk memasarkan produk bioteknologi.
+        </p>
+    </section>
+
+    <section id="manfaat" class="content-box">
+        <h2>Manfaat</h2>
+        <p>
+            Manfaat yang diharapkan dari penelitian ini adalah terciptanya produk bioteknologi yang tidak hanya mendukung keberlanjutan lingkungan, tetapi juga memberikan keuntungan ekonomi jangka panjang. Selain itu, penelitian ini diharapkan dapat membuka peluang baru bagi industri bioteknologi di Indonesia dan meningkatkan daya saing produk lokal di pasar global.
+        </p>
+    </section>
+ 
+</body>
+</html>
